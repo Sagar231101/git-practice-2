@@ -1,7 +1,7 @@
 pipeline{
   agent any
     parameters {
-        string(name: 'GREETING_NAME', defaultValue: 'Sagar', description: 'World')
+        string(name: 'GREETING_NAME', defaultValue: 'World', description: 'Sagar')
     }
 
     stages {
@@ -10,7 +10,7 @@ pipeline{
                 echo "Hello ${params.GREETING_NAME}"
             }
         }
-    }
+    
 
    stages{
       stage("build"){
@@ -41,4 +41,4 @@ pipeline{
           }
       }
    }
-}
+ }
