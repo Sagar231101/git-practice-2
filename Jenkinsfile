@@ -1,14 +1,7 @@
 CODE_CHANGES=getGitChanges()
 pipeline{
   agent any
-   stages{
-      stage("build"){
-        when{
-            expression{
-              BRANCH_NAME='main' && CODE_CHANGES ==true
-            }
-        }
-          parameters {
+    parameters {
         string(name: 'GREETING_NAME', defaultValue: 'Sagar', description: 'World')
     }
 
@@ -19,6 +12,15 @@ pipeline{
             }
         }
     }
+
+   stages{
+      stage("build"){
+        when{
+            expression{
+              BRANCH_NAME='main' && CODE_CHANGES ==true
+            }
+        }
+        
       
           steps{
             echo 'building the application....'
