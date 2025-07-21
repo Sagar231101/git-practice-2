@@ -1,3 +1,4 @@
+CODE_CHANGES = true
 pipeline{
   agent any
     parameters {
@@ -16,7 +17,7 @@ pipeline{
       stage("build"){
         when{
             expression{
-              BRANCH_NAME='main' && CODE_CHANGES ==true
+              BRANCH_NAME='main' && CODE_CHANGES = true
             }
         }
         
