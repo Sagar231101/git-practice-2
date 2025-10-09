@@ -6,28 +6,24 @@ docker logs jenkins-master
 
 
 pipeline {
-    agent any // Specifies that the pipeline can run on any available agent
+    agent any 
 
     stages {
-        stage('Build') { // Defines a stage named 'Build'
+        stage('Build') { 
             steps {
-                echo 'Building the application...' // Prints a message
-                // Add your build commands here, e.g., sh 'mvn clean install'
+                echo 'Building the application...' 
             }
         }
 
-        stage('Test') { // Defines a stage named 'Test'
+        stage('Test') { 
             steps {
-                echo 'Running tests...' // Prints a message
-                // Add your test commands here, e.g., sh 'mvn test'
+                echo 'Running tests...' 
             }
         }
 
-        stage('Deploy') { // Defines a stage named 'Deploy'
+        stage('Deploy') { 
             steps {
-                echo 'Deploying the application...' // Prints a message
-                // Add your deployment commands here, e.g., sh 'deploy_script.sh'
-            }
+                echo 'Deploying the application...'             }
         }
     }
 }
@@ -70,4 +66,5 @@ CMD ["node", "app.js"]
 
 
 https://sbupune-my.sharepoint.com/personal/akash_bhattacharyya_sbup_edu_in/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fakash%5Fbhattacharyya%5Fsbup%5Fedu%5Fin%2FDocuments%2FDesktop%2FMCA240310%20%2D%20Fundamentals%20of%20GiT%20and%20Jenkins%20%28JIRA%29%2FMCA240310%20%2D%20Fundamentals%20of%20GiT%20and%20Jenkins%20%28JIRA%29%2FLab&ga=1
+
 
