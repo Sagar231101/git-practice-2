@@ -1,0 +1,72 @@
+For jenkins installation through docker 
+docker run -p 8080:8080 -p 50000:50000 --name jenkins-master -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
+ 
+docker logs jenkins-master
+
+
+
+pipeline {
+    agent any // Specifies that the pipeline can run on any available agent
+
+    stages {
+        stage('Build') { // Defines a stage named 'Build'
+            steps {
+                echo 'Building the application...' // Prints a message
+                // Add your build commands here, e.g., sh 'mvn clean install'
+            }
+        }
+
+        stage('Test') { // Defines a stage named 'Test'
+            steps {
+                echo 'Running tests...' // Prints a message
+                // Add your test commands here, e.g., sh 'mvn test'
+            }
+        }
+
+        stage('Deploy') { // Defines a stage named 'Deploy'
+            steps {
+                echo 'Deploying the application...' // Prints a message
+                // Add your deployment commands here, e.g., sh 'deploy_script.sh'
+            }
+        }
+    }
+}
+
+
+
+for docker file first create app.js
+
+const express = require('express')
+const app = express()
+const port = 3000 //or any other port you can prefer
+
+app.get('/',(req,res)=>{
+  res.send('Hello, Afsar Ali MCA2403108 !');
+})
+
+app.listen(port,'0.0.0.0',()=>{
+  console.log(`App listening at http://localhost:${port}`)
+})
+
+
+
+Step 2 Create a docker file and write the following code in it
+
+# Use the Node.js 18-alpine base image (alpine is a lightweight Linux distribution) 
+FROM node:18-alpine 
+# Set the working directory inside the container 
+WORKDIR /app 
+# Copy the package.json and package-lock.json files 
+# We copy these first to leverage Docker's layer caching 
+COPY package*.json ./ 
+# Install the Node.js dependencies 
+RUN npm install 
+# Copy the application code into the working directory 
+COPY . .
+# Expose the port the application listens on 
+EXPOSE 3000 
+# Define the command to run the application 
+CMD ["node", "app.js"]
+
+
+
